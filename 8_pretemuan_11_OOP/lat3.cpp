@@ -6,7 +6,7 @@ using namespace std;
 class Graph {
     protected:
         int v;
-        list<int> adj[0];
+        list<int> adj[100];
 
     public:
     Graph(int len) {
