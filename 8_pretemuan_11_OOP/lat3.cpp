@@ -13,11 +13,6 @@ class Graph {
         v = len;
     }
 
-    void setLen(int len){
-        v = len;
-        adj[v];
-    }
-
     void addEdge(int u, int v){
         if(adj[u].empty()) adj[u].push_back(u);
         if(adj[v].empty()) adj[v].push_back(v);
