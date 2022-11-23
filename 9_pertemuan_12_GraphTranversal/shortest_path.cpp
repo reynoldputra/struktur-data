@@ -8,8 +8,7 @@ class Graph {
     protected:
         int v;
         list<int> adj[100];
-        int pred[100];
-        int dist[100];
+        int res[100];
 
     public:
         Graph(int len) {
@@ -21,6 +20,7 @@ class Graph {
         }
 
         void showGraph(){
+            cout << "===Show Graph===" << endl;
             for (int i = 0; i < v; i++)
             {
                 list<int>::iterator it;
@@ -32,21 +32,21 @@ class Graph {
             }
         }
 
-        void BFS(int start){
+        void BFS(int start, int end){
             cout << "===BFS===" << endl;
             bool visited[100];
             for (int i = 0; i < v; i++)
             {
                 visited[i] = false;
-                pred[i] = -1;
-                dist[i] = -1;
+                res[i] = -1;
             }
             
             queue<int> q;
+
             visited[start] = true;
-            dist[start] = 0;
 
             list<int>::iterator it;
+
             q.push(start);
 
             while (!q.empty())
@@ -57,27 +57,43 @@ class Graph {
                 {
                     int index = *it;
                     if(!visited[index])
-                    {
+                    {   
+                        cout << index << " " << curr << endl;
+                        res[index] = curr;
                         visited[index] = true;
                         q.push(index);
-                        dist[index] = dist[curr] + 1;
-                        pred[index] = curr;
-
                     }
                 }
             }
 
-            for (int i = 0; i < v; i++)
-            {
-                cout << dist[i] << " " << pred[i] << endl;
+            int s = end;
+            int resArr[100];
+            int i = 0;
+            while(s){
+                resArr[i] = s;
+                i++;
+                s = res[s];
+                if(s == start){
+                    resArr[i] = s;
+                    break;
+                }
             }
             
+            cout << "===Shortest Path===" << endl;
+
+            while (i != -1)
+            {
+                cout << resArr[i] << " ";
+                i--;
+            }
+            
+
         }
 };
 
 
 int main(){
-    Graph graph1(8);
+  Graph graph1(8);
 
     graph1.addEdge( 0, 1);
     graph1.addEdge( 0, 3);
@@ -92,5 +108,5 @@ int main(){
     
     graph1.showGraph();
 
-    graph1.BFS(0);
+    graph1.BFS(0, 7);
 }
