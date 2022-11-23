@@ -87,26 +87,43 @@ class Graph {
                 i--;
             }
             
-
+            cout << endl;
         }
 };
 
 
 int main(){
-  Graph graph1(8);
+    cout << "#GRAPH1" << endl;
+    Graph graph1(5);
 
+    graph1.addEdge( 4, 2);
+    graph1.addEdge( 4, 3);
+    graph1.addEdge( 2, 1);
+    graph1.addEdge( 2, 3);
+    graph1.addEdge( 1, 3);
     graph1.addEdge( 0, 1);
-    graph1.addEdge( 0, 3);
-    graph1.addEdge( 1, 2);
-    graph1.addEdge( 3, 4);
-    graph1.addEdge( 3, 7);
-    graph1.addEdge( 4, 5);
-    graph1.addEdge( 4, 6);
-    graph1.addEdge( 4, 7);
-    graph1.addEdge( 5, 6);
-    graph1.addEdge( 6, 7);
     
     graph1.showGraph();
 
-    graph1.BFS(0, 7);
+    graph1.BFS(4, 1);
+
+
+
+    cout << "#GRAPH2" << endl;
+    Graph graph2(8);
+
+    graph2.addEdge( 0, 1);
+    graph2.addEdge( 0, 3);
+    graph2.addEdge( 1, 2);
+    graph2.addEdge( 3, 4);
+    graph2.addEdge( 3, 7);
+    graph2.addEdge( 4, 5);
+    graph2.addEdge( 4, 6);
+    graph2.addEdge( 4, 7);
+    graph2.addEdge( 5, 6);
+    graph2.addEdge( 6, 7);
+    
+    graph2.showGraph();
+
+    graph2.BFS(0, 7);
 }
